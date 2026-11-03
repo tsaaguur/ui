@@ -94,12 +94,12 @@ function Frame({ f, total }: { f: StoryFrame; total: number }) {
   return (
     <article className="tz-panel flex h-full flex-col overflow-hidden">
       <Stamp n={f.n} total={total} />
-      {f.image && !big ? <span className="mx-[6px] mt-[6px] block aspect-[16/10] overflow-hidden rounded-[7px] bg-muted"><img src={f.image} alt="" className="h-full w-full object-cover" loading="lazy" /></span> : null}
+      {f.image && !big ? <span className="mx-[6px] mt-[6px] block aspect-[16/10] overflow-hidden rounded-[7px] bg-muted"><img src={f.image} alt="" className="h-full w-full object-cover" loading="lazy" onError={(e) => { const box = e.currentTarget.parentElement; if (box) box.style.display = "none"; }} /></span> : null}
       <div className="flex flex-1 flex-col px-5 pb-5 pt-2">
         {f.image && !big ? <div className="flex items-center gap-2"><Icon name={SIDE[f.src].icon} className="h-[18px] w-[18px] shrink-0 text-foreground/80" /><span className="tz-label truncate">{KIND[f.kind]} · {SIDE[f.src].word}</span></div> : <Head kind={f.kind} src={f.src} />}
         <p className="mt-3 text-[13px] text-muted-foreground"><span className="font-medium text-foreground">{f.who || "нэргүй"}</span> · {when(f.at)}</p>
         <div className="mt-2 flex gap-2">{big ? <Icon name="quote" className="mt-1 h-5 w-5 shrink-0 text-brand" /> : null}<p className={`tz-display font-semibold leading-[1.15] ${big ? "text-[22px] sm:text-[26px]" : "text-[17px] sm:text-[19px]"}`}>{words(f.text, big ? 200 : 240)}</p></div>
-        {f.image && big ? <span className="mt-4 block aspect-[16/10] w-full overflow-hidden rounded-[7px] bg-muted"><img src={f.image} alt="" className="h-full w-full object-cover" loading="lazy" /></span> : null}
+        {f.image && big ? <span className="mt-4 block aspect-[16/10] w-full overflow-hidden rounded-[7px] bg-muted"><img src={f.image} alt="" className="h-full w-full object-cover" loading="lazy" onError={(e) => { const box = e.currentTarget.parentElement; if (box) box.style.display = "none"; }} /></span> : null}
         <div className="mt-auto flex items-center justify-between pt-4">
           <span className="tz-num text-[11.5px] text-muted-foreground">{f.reactions ? `${fmtInt(f.reactions)} хариу үйлдэл` : ""}</span>
           {f.url ? <a href={f.url} target="_blank" rel="noopener noreferrer" className="tz-pill">Эх сурвалж <Icon name="out" className="h-3.5 w-3.5" /></a> : null}
