@@ -30,7 +30,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           <Link href="/" className="group inline-flex items-center gap-2" aria-label="Цаагуур UI">
             <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-[8px] bg-[#131518]"><img src="/brand/tsaaguur-mark-light.svg" alt="" aria-hidden className="h-7 w-7" /></span>
             <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Цаагуур</span>
-            <span className="tz-label rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px]">ui · 0.1.0</span>
+            <span className="tz-label hidden rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px] sm:inline">ui · 0.1.0</span>
           </Link>
           <div className="ml-auto flex items-center gap-2">
             <a href="https://lab.tsaaguur.mn" className="tz-pill hidden sm:inline-flex">lab.tsaaguur.mn <Icon name="arrow-up-right" className="h-3.5 w-3.5" /></a>
