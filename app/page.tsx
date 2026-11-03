@@ -5,10 +5,10 @@ import { SECTIONS } from "@/components/sections";
 export default function Home() {
   return (
     <article className="max-w-[920px]">
-      <div className="tz-label">@tsaaguur/ui · 0.1.0</div>
+      <div className="tz-label">@tsaaguur/ui · 0.2.0</div>
       <h1 className="tz-display mt-1 text-[40px] font-bold leading-[1] sm:text-[56px]">Цаагуурын өөрийн UI</h1>
       <p className="mt-5 max-w-[66ch] text-[16px] leading-relaxed text-muted-foreground">
-        Бидний өөрсдөө зурсан, өөрсдөө хөдөлгөсөн нэг систем: өнгө, зай, гурван үсгийн хэв, 25 дүрс, 16 хөдөлдөг сэдвийн тэмдэг, сум, цэг, баганат зураг, карт, самбар, пилл, товч, түүхийн самбар. Гаднаас авсан дүрс, emoji, бэлэн компонент байхгүй. lab.tsaaguur.mn энэ санг хэрэглэнэ; энд хүн болгон нь харагдаж, шалгагдана.
+        Бидний өөрсдөө зурсан, өөрсдөө хөдөлгөсөн нэг систем: өнгө, зай, гурван үсгийн хэв, 115 дүрс, 16 хөдөлдөг сэдвийн тэмдэг, оролтын бүх хэрэгсэл (талбар, сонголт, унтраалга, гулсуур), замчлал (таб, цэс, хуудаслалт, алхам), хариу (мэдэгдэл, тоаст, диалог, хажуу самбар, ачаалалт), өгөгдлийн дүрслэл (хүснэгт, тойм, цаг хугацааны шугам), карт, самбар, түүхийн самбар. Гаднаас авсан дүрс, emoji, бэлэн компонент байхгүй. lab.tsaaguur.mn энэ санг хэрэглэнэ; энд хүн болгон нь харагдаж, шалгагдана.
       </p>
       <div className="mt-6 flex flex-wrap gap-2">
         <Button href="/glyphs" icon="arrow-right" tone="brand">Сэдвийн тэмдэг</Button>
