@@ -1,0 +1,46 @@
+/*
+ * @tsaaguur/ui tokens (2026-11-04). Editorial, typographic, two themes.
+ * Three faces with jobs: Onest (body), Geologica (display), JetBrains Mono
+ * (every label, date and number); the apps load them and set --font-onest,
+ * --font-geologica, --font-jbmono. Grey paper / near-black canvases, glass
+ * cards, 8 px radius, hairlines. One brand blue, the heat-dot mark's #3d8eff.
+ */
+:root {
+  --background: #e0e0e0;
+  --foreground: #131518;
+  --card: rgba(255, 255, 255, 0.78);
+  --card-solid: #ffffff;
+  --muted: #eef0f3;
+  --muted-foreground: #4b515b;
+  --border: #c9cdd2;
+  --hairline: rgba(19, 21, 24, 0.12);
+  --brand: #3d8eff;
+  --brand-strong: #1a6ddb;
+  --brand-soft: #eaf3ff;
+  --up: #1a9e5c;
+  --down: #d9482b;
+  --warm: #f5a623;
+  --radius: 8px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.dark {
+  --background: #121212;
+  --foreground: #e8eaed;
+  --card: rgba(23, 25, 29, 0.8);
+  --card-solid: #17191d;
+  --muted: #1d2025;
+  --muted-foreground: #a1a7b2;
+  --border: #262a30;
+  --hairline: rgba(232, 234, 237, 0.12);
+  --brand: #3d8eff;
+  --brand-strong: #5ca9ff;
+  --brand-soft: #001129;
+  --up: #4ade80;
+  --down: #ff6b6b;
+  --warm: #fbbf24;
+}
+html { color-scheme: light; }
+html.dark { color-scheme: dark; }
+body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+a, button { cursor: pointer; }
+::selection { background: var(--brand); color: #fff; }

@@ -1,0 +1,129 @@
+/* @tsaaguur/ui: the classes the components use. One easing for everything
+   that moves (--ease), nothing moves under prefers-reduced-motion. */
+@import "./tokens.css";
+
+/* grain under everything */
+.tz-noise { pointer-events: none; position: fixed; inset: 0; z-index: 0; opacity: 0.22; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0 0.5 0 0 0 0.6 0'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 128px 128px; }
+.dark .tz-noise { opacity: 0.4; }
+/* the heat-dot field, for slides without a picture */
+.tz-dots { background-image: radial-gradient(circle at center, rgba(61, 142, 255, 0.55) 0 2px, transparent 2.5px); background-size: 22px 22px; }
+
+/* type helpers */
+.tz-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-foreground); }
+.tz-display { font-family: var(--font-display); letter-spacing: -0.02em; }
+.tz-num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* glass */
+.tz-glass { background: var(--card); backdrop-filter: blur(28px) saturate(150%); -webkit-backdrop-filter: blur(28px) saturate(150%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5); border: 1px solid var(--hairline); }
+.dark .tz-glass { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06); }
+.tz-pill { display: inline-flex; align-items: center; gap: 6px; border-radius: 9999px; padding: 7px 12px; font-size: 12.5px; font-weight: 500; line-height: 1; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(0, 0, 0, 0.1); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 4px 14px rgba(0, 0, 0, 0.06); transition: background-color 0.16s, border-color 0.16s, transform 0.16s; }
+.tz-pill:hover { background: rgba(255, 255, 255, 0.85); border-color: rgba(0, 0, 0, 0.18); }
+.tz-pill:active { transform: scale(0.97); }
+.tz-pill[aria-pressed="true"], .tz-pill.is-on { background: var(--foreground); color: var(--background); border-color: var(--foreground); }
+.dark .tz-pill { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.12); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 14px rgba(0, 0, 0, 0.3); }
+.dark .tz-pill:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.22); }
+.dark .tz-pill[aria-pressed="true"], .dark .tz-pill.is-on { background: var(--foreground); color: var(--background); }
+.tz-button { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; padding: 12px 20px; font-size: 14px; font-weight: 600; line-height: 1; background: var(--foreground); color: var(--background); transition: transform 0.16s, opacity 0.16s; }
+.tz-button:hover { opacity: 0.9; } .tz-button:active { transform: scale(0.97); }
+.tz-button.is-brand { background: var(--brand); color: #fff; }
+.tz-button.is-quiet { background: transparent; color: var(--foreground); border: 1px solid var(--hairline); }
+.tz-glass-button { display: inline-grid; place-items: center; border-radius: 9999px; color: #fff; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.28); backdrop-filter: blur(18px) saturate(170%); -webkit-backdrop-filter: blur(18px) saturate(170%); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 6px 20px rgba(0, 0, 0, 0.18); transition: background-color 0.16s, border-color 0.16s, transform 0.16s; }
+.tz-glass-button:hover { background: rgba(255, 255, 255, 0.22); border-color: rgba(255, 255, 255, 0.42); }
+.tz-glass-button:active { transform: scale(0.97); }
+.tz-kicker { display: inline-flex; align-items: center; gap: 8px; border-radius: 9999px; padding: 6px 10px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(0, 0, 0, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.tz-kicker i { width: 6px; height: 6px; border-radius: 9999px; background: var(--brand); display: inline-block; }
+
+/* cards and panels */
+.tz-card { background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.tz-lift { transition: transform 0.3s var(--ease), box-shadow 0.3s, border-color 0.3s; }
+.tz-lift:hover, .tz-lift:focus-visible { border-color: color-mix(in oklch, var(--foreground) 22%, transparent); transform: translateY(-3px); box-shadow: 0 24px 44px -30px rgba(0, 0, 0, 0.45); }
+.dark .tz-lift:hover, .dark .tz-lift:focus-visible { box-shadow: 0 24px 44px -26px rgba(0, 0, 0, 0.75); }
+.tz-underline { background-image: linear-gradient(currentColor, currentColor); background-position: 0 100%; background-repeat: no-repeat; background-size: 0% 1px; transition: background-size 0.45s var(--ease); }
+.group:hover .tz-underline, .group:focus-visible .tz-underline { background-size: 100% 1px; }
+.tz-hairline { border-top: 1px solid var(--hairline); }
+/* storyboard panels: a thin outer line and an inner one a little way in */
+.tz-panel { position: relative; border: 1px solid var(--hairline); border-radius: 12px; background: var(--card); }
+.tz-panel::after { content: ""; position: absolute; inset: 5px; border: 1px solid var(--hairline); border-radius: 8px; pointer-events: none; }
+.tz-strip { scrollbar-width: none; }
+.tz-strip::-webkit-scrollbar { display: none; }
+
+/* hero */
+@keyframes tz-hero-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.tz-hero-progress { transform-origin: 0 center; animation: tz-hero-progress var(--tz-slide, 7s) linear forwards; }
+.tz-paused .tz-hero-progress { animation-play-state: paused; }
+@keyframes tz-hero-zoom { from { transform: scale(1.02); } to { transform: scale(1.1); } }
+.tz-hero-zoom { animation: tz-hero-zoom 9s ease-out forwards; }
+@keyframes tz-hero-copy { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.tz-hero-copy { animation: tz-hero-copy 0.6s var(--ease) both; }
+@keyframes tz-fade { from { opacity: 0; } to { opacity: 1; } }
+.tz-fade { animation: tz-fade 0.5s ease-out both; }
+
+/* ticker */
+@keyframes tz-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tz-ticker-track { display: flex; width: max-content; animation: tz-ticker 120s linear infinite; }
+.tz-ticker:hover .tz-ticker-track, .tz-ticker.is-paused .tz-ticker-track { animation-play-state: paused; }
+
+/* reveals */
+@keyframes tz-rise { from { opacity: 0; transform: translateY(18px) scale(0.96); } to { opacity: 1; transform: none; } }
+.tz-rise { animation: tz-rise 0.7s var(--ease) both; }
+.tz-rise-2 { animation-delay: 0.08s; } .tz-rise-3 { animation-delay: 0.16s; } .tz-rise-4 { animation-delay: 0.24s; }
+@keyframes tz-roll-up { from { opacity: 0; transform: translateY(90%); } to { opacity: 1; transform: none; } }
+.tz-roll-up { display: inline-block; animation: tz-roll-up 0.28s var(--ease) both; }
+@keyframes tz-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+.tz-live { animation: tz-pulse 2.4s ease-in-out infinite; }
+
+/* drawn marks: a stroke that draws itself once, a dot that breathes */
+@keyframes tz-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.tz-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: tz-draw 0.9s var(--ease) both; }
+.tz-draw-2 { animation-delay: 0.18s; } .tz-draw-3 { animation-delay: 0.36s; } .tz-draw-late { animation-delay: 0.5s; }
+@keyframes tz-breathe { 0%, 100% { transform: scale(1); opacity: 0.55; } 50% { transform: scale(2.1); opacity: 0; } }
+.tz-breathe { animation: tz-breathe 2.6s ease-in-out infinite; }
+
+/* topic pictograms, idle motion: each subject moves the way it would */
+@keyframes tz-g-flicker { 0%, 100% { transform: scale(1) translateY(0); opacity: 1; } 35% { transform: scale(1.08) translateY(-0.6px); opacity: 0.85; } 70% { transform: scale(0.94) translateY(0.3px); opacity: 1; } }
+.tz-g-flicker { transform-origin: 12px 20px; animation: tz-g-flicker 1.6s ease-in-out infinite; }
+@keyframes tz-g-drift { 0% { transform: translateX(-1.2px); opacity: 0.4; } 50% { transform: translateX(1.2px); opacity: 1; } 100% { transform: translateX(-1.2px); opacity: 0.4; } }
+.tz-g-drift { animation: tz-g-drift 2.8s ease-in-out infinite; }
+.tz-g-drift-2 { animation-delay: 0.7s; }
+@keyframes tz-g-redraw { 0% { stroke-dashoffset: 1; } 40% { stroke-dashoffset: 0; } 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1; } }
+.tz-g-redraw { stroke-dasharray: 1; animation: tz-g-redraw 3s var(--ease) infinite; }
+@keyframes tz-g-flash { 0%, 100% { opacity: 1; } 8% { opacity: 0.2; } 16% { opacity: 1; } 24% { opacity: 0.35; } 32% { opacity: 1; } }
+.tz-g-flash { animation: tz-g-flash 4s linear infinite; }
+@keyframes tz-g-swing { 0%, 100% { transform: rotate(-6deg); } 50% { transform: rotate(6deg); } }
+.tz-g-swing { transform-origin: 12px 4px; animation: tz-g-swing 2.4s ease-in-out infinite; }
+@keyframes tz-g-flip { 0%, 100% { transform: scaleX(1); } 50% { transform: scaleX(0.12); } }
+.tz-g-flip { transform-origin: 12px 12px; animation: tz-g-flip 3.2s var(--ease) infinite; }
+@keyframes tz-g-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.tz-g-spin { transform-origin: 12px 12px; animation: tz-g-spin 9s linear infinite; }
+@keyframes tz-g-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.2px); } }
+.tz-g-bob { animation: tz-g-bob 2.2s ease-in-out infinite; }
+@keyframes tz-g-tip { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-5deg); } }
+.tz-g-tip { transform-origin: 12px 7px; animation: tz-g-tip 3s ease-in-out infinite; }
+@keyframes tz-g-wind { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(1.2px); } }
+.tz-g-wind { animation: tz-g-wind 2s ease-in-out infinite; }
+@keyframes tz-g-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+.tz-g-blink { animation: tz-g-blink 1.8s ease-in-out infinite; }
+@keyframes tz-g-drop { 0% { transform: translateY(-3px); opacity: 0; } 30% { opacity: 1; } 60%, 100% { transform: translateY(0); opacity: 1; } }
+.tz-g-drop { animation: tz-g-drop 2.6s var(--ease) infinite; }
+
+/* theme switch: a circle grows from the button */
+html.tz-theme-swap *, html.tz-theme-swap ::before, html.tz-theme-swap ::after { transition: none !important; }
+html[data-tz-vt="active"]::view-transition-group(root) { animation-duration: 0.45s; }
+html[data-tz-vt="active"]::view-transition-old(root) { animation: none; mix-blend-mode: normal; z-index: 1; }
+html[data-tz-vt="active"]::view-transition-new(root) { animation: none; mix-blend-mode: normal; z-index: 2; clip-path: var(--tz-clip-from); }
+
+/* reading progress */
+.tz-progress { position: fixed; left: 0; bottom: 0; height: 2px; background: var(--brand); z-index: 60; transform-origin: 0 center; }
+
+/* touch targets */
+@media (pointer: coarse) { .tz-hit { position: relative; } .tz-hit::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 44px); height: max(100%, 44px); transform: translate(-50%, -50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tz-hero-zoom, .tz-hero-copy, .tz-rise, .tz-roll-up, .tz-fade, .tz-live, .tz-ticker-track, .tz-draw, .tz-breathe,
+  [class*="tz-g-"] { animation: none !important; }
+  .tz-hero-progress { animation: none; transform: none; }
+  .tz-lift, .tz-lift:hover { transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .tz-glass, .tz-card, .tz-pill { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--card-solid); }
+}
