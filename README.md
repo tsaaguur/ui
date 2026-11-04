@@ -1,5 +1,7 @@
 # @tsaaguur/ui
 
+[![ci](https://github.com/tsaaguur/ui/actions/workflows/ci.yml/badge.svg)](https://github.com/tsaaguur/ui/actions/workflows/ci.yml)
+
 > Tsaaguur's own React UI library for Next.js and Tailwind v4: design tokens,
 > 115 hand-drawn SVG icons, animated topic pictograms, inputs, navigation,
 > feedback, data display, surfaces and a story board. Made in Ulaanbaatar for
