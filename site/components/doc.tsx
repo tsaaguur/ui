@@ -29,9 +29,9 @@ export function Stage({ title, code, note, children, dark = false }: { title: st
 
 export function Props({ rows }: { rows: [string, string, string][] }) {
   return (
-    <table className="w-full text-[13px]">
+    <div className="overflow-x-auto"><table className="w-full min-w-[560px] text-[13px]">
       <thead><tr className="tz-label text-left"><th className="py-1.5 pr-3 font-semibold">Prop</th><th className="py-1.5 pr-3 font-semibold">Type</th><th className="py-1.5 font-semibold">Description</th></tr></thead>
       <tbody>{rows.map((r) => <tr key={r[0]} className="border-t border-hairline"><td className="tz-num py-1.5 pr-3">{r[0]}</td><td className="tz-num py-1.5 pr-3 text-muted-foreground">{r[1]}</td><td className="py-1.5">{r[2]}</td></tr>)}</tbody>
-    </table>
+    </table></div>
   );
 }
