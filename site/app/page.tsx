@@ -1,28 +1,47 @@
 import Link from "next/link";
-import { Icon, Glyph, Pill, Button } from "@tsaaguur/ui";
+import { Icon, Glyph, Button, Pill } from "@tsaaguur/ui";
 import { SECTIONS } from "@/components/sections";
+import { CodeBlock } from "@/components/code";
+import { CommitList, fetchCommits } from "@/components/commits";
+import pkg from "../../package.json";
 
-export default function Home() {
+export const revalidate = 600;
+
+const STEPS: [string, string, string][] = [
+  ["1. Install", "sh", "pnpm add github:tsaaguur/ui"],
+  ["2. next.config.mjs", "js", 'const nextConfig = {\n  transpilePackages: ["@tsaaguur/ui"],\n};\nexport default nextConfig;'],
+  ["3. app/globals.css", "css", '@import "tailwindcss";\n@import "@tsaaguur/ui/styles.css";\n@source "../node_modules/@tsaaguur/ui/src";'],
+  ["4. Use it", "tsx", 'import { Button, Icon, Glyph } from "@tsaaguur/ui";\n\n<Button tone="brand" icon="arrow-right">Open</Button>\n<Icon name="dome" className="h-5 w-5" />\n<Glyph name="цасан шуурга" size={32} animate="idle" />'],
+];
+
+export default async function Home() {
+  const [commits, now] = [await fetchCommits(5), Date.now()];
   return (
     <article className="max-w-[920px]">
-      <div className="tz-label">@tsaaguur/ui · 0.2.0</div>
-      <h1 className="tz-display mt-1 text-[40px] font-bold leading-[1] sm:text-[56px]">Цаагуурын өөрийн UI</h1>
-      <p className="mt-5 max-w-[66ch] text-[16px] leading-relaxed text-muted-foreground">
-        Бидний өөрсдөө зурсан, өөрсдөө хөдөлгөсөн нэг систем: өнгө, зай, гурван үсгийн хэв, 115 дүрс, 16 хөдөлдөг сэдвийн тэмдэг, оролтын бүх хэрэгсэл (талбар, сонголт, унтраалга, гулсуур), замчлал (таб, цэс, хуудаслалт, алхам), хариу (мэдэгдэл, тоаст, диалог, хажуу самбар, ачаалалт), өгөгдлийн дүрслэл (хүснэгт, тойм, цаг хугацааны шугам), карт, самбар, түүхийн самбар. Гаднаас авсан дүрс, emoji, бэлэн компонент байхгүй. lab.tsaaguur.mn энэ санг хэрэглэнэ; энд хүн болгон нь харагдаж, шалгагдана.
+      <div className="tz-label">@tsaaguur/ui · v{pkg.version} · MIT</div>
+      <h1 className="tz-display mt-1 text-[40px] font-bold leading-[1] sm:text-[56px]">A UI library drawn by hand</h1>
+      <p className="mt-5 max-w-[62ch] text-[16px] leading-relaxed text-muted-foreground">
+        Tokens, three typefaces, 115 icons, 16 animated pictograms, inputs, navigation, feedback, data display, surfaces and a story board. React 19, Next.js 15+, Tailwind v4, TypeScript. No icon package, no emoji, one easing curve.
       </p>
       <div className="mt-6 flex flex-wrap gap-2">
-        <Button href="/glyphs" icon="arrow-right" tone="brand">Сэдвийн тэмдэг</Button>
-        <Button href="/board" icon="arrow-right" tone="quiet">Түүхийн самбар</Button>
-        <Pill href="https://lab.tsaaguur.mn" icon="arrow-up-right">lab.tsaaguur.mn</Pill>
+        <Button href="/inputs" icon="arrow-right" tone="brand">Components</Button>
+        <Button href="/icons" icon="arrow-right" tone="quiet">Icons</Button>
+        <Pill href="https://github.com/tsaaguur/ui" icon="out">GitHub</Pill>
+        <Pill href="https://lab.tsaaguur.mn" icon="out">See it in use</Pill>
       </div>
-      <div className="tz-card mt-10 p-5">
-        <div className="tz-label">Хэрэглэх</div>
-        <pre className="tz-num mt-2 overflow-x-auto text-[12.5px] leading-relaxed"><code>{`// package.json          "@tsaaguur/ui": "link:../ui"
-// next.config.mjs       transpilePackages: ["@tsaaguur/ui"]
-// app/globals.css       @import "tailwindcss"; @import "@tsaaguur/ui/styles.css"; @source "../../ui/src";
-import { Icon, Glyph, StateMark, Board, Pill } from "@tsaaguur/ui";`}</code></pre>
-      </div>
-      <h2 className="tz-display mt-12 text-[24px] font-semibold">Хэсгүүд</h2>
+
+      <h2 className="tz-display mt-12 text-[24px] font-semibold">Quick start</h2>
+      <p className="mt-1 text-[13.5px] text-muted-foreground">Installs straight from the repository; the lockfile pins the commit. Needs React 19, Next 15+ and Tailwind v4 in the app.</p>
+      <ol className="mt-4 grid gap-3">
+        {STEPS.map(([t, lang, code]) => (
+          <li key={t} className="tz-card overflow-hidden">
+            <div className="tz-label px-4 pt-3">{t}</div>
+            <CodeBlock code={code} lang={lang} className="mt-2" />
+          </li>
+        ))}
+      </ol>
+
+      <h2 className="tz-display mt-12 text-[24px] font-semibold">Components</h2>
       <ol className="mt-4 grid gap-3 sm:grid-cols-2">
         {SECTIONS.filter((s) => s.href !== "/").map((s, i) => (
           <li key={s.href}>
@@ -35,13 +54,20 @@ import { Icon, Glyph, StateMark, Board, Pill } from "@tsaaguur/ui";`}</code></pr
           </li>
         ))}
       </ol>
-      <h2 className="tz-display mt-12 text-[24px] font-semibold">Дүрэм</h2>
-      <ul className="mt-4 grid gap-3 text-[14.5px] leading-relaxed sm:grid-cols-2">
-        <li className="tz-card p-4"><Glyph name="цаг агаар" size={28} animate="idle" className="mb-2" /><b>Нэг хөдөлгөөний муруй.</b> Хөдөлдөг бүхэн --ease (cubic-bezier .2 .7 .2 1) дээр; үсрэх, тонгорох байхгүй; prefers-reduced-motion бол бүгд зогсоно.</li>
-        <li className="tz-card p-4"><Glyph name="хууль батлах" size={28} animate="idle" className="mb-2" /><b>Зүүн хажуугийн өнгөт зураас байхгүй.</b> Онцлохдоо дэвсгэр, бүтэн хүрээ, зай, жин, эсвэл эхний дүрс хэрэглэнэ.</li>
-        <li className="tz-card p-4"><Glyph name="төсвийн тодотгол" size={28} animate="idle" className="mb-2" /><b>Тоо, огноо, шошго бүгд mono.</b> Нэр, гарчиг display; бие Onest.</li>
-        <li className="tz-card p-4"><Glyph name="н.учрал" size={28} animate="idle" className="mb-2" /><b>Дүрс бүр зурагдсан.</b> 24-ийн торон дээр 1.75 зураас, дугуй үзүүр; зарим цэг санаатайгаар торноос гарна.</li>
+
+      <h2 className="tz-display mt-12 text-[24px] font-semibold">Rules</h2>
+      <ul className="mt-4 grid gap-3 text-[14px] leading-relaxed sm:grid-cols-2">
+        <li className="tz-card p-4"><Glyph name="цаг агаар" size={28} animate="idle" className="mb-2" /><b>One easing.</b> Everything moves on <code className="tz-num">--ease</code>; nothing bounces; all motion stops under <code className="tz-num">prefers-reduced-motion</code>.</li>
+        <li className="tz-card p-4"><Glyph name="хууль батлах" size={28} animate="idle" className="mb-2" /><b>No left-border accent bars.</b> Tint, border, spacing, weight or a leading mark instead.</li>
+        <li className="tz-card p-4"><Glyph name="төсвийн тодотгол" size={28} animate="idle" className="mb-2" /><b>Mono for numbers and labels</b> (<code className="tz-num">tz-num</code>, <code className="tz-num">tz-label</code>); the display face for names.</li>
+        <li className="tz-card p-4"><Glyph name="н.учрал" size={28} animate="idle" className="mb-2" /><b>Every mark is drawn</b> on the 24 grid, stroke 1.75, round caps. Controls are ours: no native select, checkbox or range.</li>
       </ul>
+
+      <div className="mt-12 flex items-end justify-between gap-3">
+        <h2 className="tz-display text-[24px] font-semibold">Recent commits</h2>
+        <Pill href="/changelog" icon="arrow-right">Changelog</Pill>
+      </div>
+      <div className="tz-card mt-4 px-4 py-2"><CommitList commits={commits} now={now} /></div>
     </article>
   );
 }

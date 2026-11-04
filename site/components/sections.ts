@@ -1,38 +1,40 @@
 import type { IconName } from "@tsaaguur/ui";
 
-/* The library's table of contents, grouped the way a reader looks for a
-   piece: what it is made of, then the parts by job. `search` lists the
-   component names a page documents, for the search box. */
+/* The table of contents, grouped by job. `search` lists the component
+   names a page documents, for the search box. */
 export type Section = { href: string; label: string; hint: string; icon: IconName; search?: string[] };
 export const GROUPS: { title: string; items: Section[] }[] = [
-  { title: "Суурь", items: [
-    { href: "/", label: "Эхлэл", hint: "юу вэ, яаж хэрэглэх", icon: "ger" },
-    { href: "/tokens", label: "Өнгө, зай", hint: "tokens.css", icon: "hash", search: ["tokens", "color", "radius", "ease"] },
-    { href: "/type", label: "Үсэг", hint: "гурван үсгийн хэв", icon: "quote", search: ["typography", "display", "mono", "label"] },
-    { href: "/motion", label: "Хөдөлгөөн", hint: "keyframes, ease", icon: "peak", search: ["motion", "animation", "keyframes"] },
+  { title: "Foundation", items: [
+    { href: "/", label: "Get started", hint: "install, setup", icon: "ger", search: ["install", "setup", "quick start"] },
+    { href: "/tokens", label: "Tokens", hint: "color, radius, ease", icon: "hash", search: ["tokens", "color", "radius", "ease", "dark"] },
+    { href: "/type", label: "Typography", hint: "three typefaces", icon: "quote", search: ["typography", "display", "mono", "label", "font"] },
+    { href: "/motion", label: "Motion", hint: "keyframes", icon: "peak", search: ["motion", "animation", "keyframes"] },
   ]},
-  { title: "Тэмдэг", items: [
-    { href: "/icons", label: "Дүрс", hint: "115 зурсан тэмдэг", icon: "sun", search: ["Icon", "icons"] },
-    { href: "/glyphs", label: "Сэдвийн тэмдэг", hint: "16 хөдөлдөг пиктограм", icon: "flame", search: ["Glyph", "glyphKind", "pictogram", "emoji"] },
-    { href: "/marks", label: "Хөдөлдөг тэмдэг", hint: "сум, цэг, баганат зураг", icon: "pulse", search: ["StateMark", "LiveDot", "DrawnBars", "Spark", "Sprockets", "Stamp"] },
+  { title: "Marks", items: [
+    { href: "/icons", label: "Icons", hint: "115 drawn icons", icon: "sun", search: ["Icon", "icons", "svg"] },
+    { href: "/glyphs", label: "Pictograms", hint: "16 animated glyphs", icon: "flame", search: ["Glyph", "glyphKind", "pictogram", "emoji"] },
+    { href: "/marks", label: "Marks", hint: "arrows, dots, bars", icon: "pulse", search: ["StateMark", "LiveDot", "DrawnBars", "Spark", "Sprockets", "Stamp"] },
   ]},
-  { title: "Оролт", items: [
-    { href: "/inputs", label: "Оролт", hint: "Input, Select, Switch, Slider", icon: "edit", search: ["Input", "Textarea", "SearchField", "Select", "Checkbox", "RadioGroup", "Switch", "Slider", "Segmented", "Chip", "Field"] },
-    { href: "/controls", label: "Товч, пилл", hint: "Pill, Button, glass", icon: "play", search: ["Pill", "Button", "ThemeToggle", "kicker", "glass"] },
+  { title: "Inputs", items: [
+    { href: "/inputs", label: "Inputs", hint: "Input, Select, Switch, Slider", icon: "edit", search: ["Input", "Textarea", "SearchField", "Select", "Checkbox", "RadioGroup", "Switch", "Slider", "Segmented", "Chip", "Field"] },
+    { href: "/controls", label: "Buttons", hint: "Button, Pill, glass", icon: "play", search: ["Pill", "Button", "ThemeToggle", "kicker", "glass"] },
   ]},
-  { title: "Замчлал", items: [
-    { href: "/navigation", label: "Замчлал", hint: "Tabs, Breadcrumb, Menu, Stepper", icon: "columns", search: ["Tabs", "Breadcrumb", "Pagination", "Menu", "Stepper"] },
+  { title: "Navigation", items: [
+    { href: "/navigation", label: "Navigation", hint: "Tabs, Menu, Stepper", icon: "columns", search: ["Tabs", "Breadcrumb", "Pagination", "Menu", "Stepper"] },
   ]},
-  { title: "Хариу", items: [
-    { href: "/feedback", label: "Хариу", hint: "Alert, Toast, Dialog, Drawer", icon: "bell", search: ["Alert", "Toast", "useToast", "Dialog", "Drawer", "Tooltip", "Progress", "Ring", "Spinner", "Skeleton", "Empty"] },
+  { title: "Feedback", items: [
+    { href: "/feedback", label: "Feedback", hint: "Alert, Toast, Dialog", icon: "bell", search: ["Alert", "Toast", "useToast", "Dialog", "Drawer", "Tooltip", "Progress", "Ring", "Spinner", "Skeleton", "Empty"] },
   ]},
-  { title: "Өгөгдөл", items: [
-    { href: "/display", label: "Өгөгдөл", hint: "Avatar, Badge, Table, Timeline", icon: "table", search: ["Avatar", "AvatarGroup", "Badge", "Table", "Stat", "Timeline", "DefinitionList", "Kbd", "Code", "Divider"] },
+  { title: "Data", items: [
+    { href: "/display", label: "Data display", hint: "Table, Stat, Timeline", icon: "table", search: ["Avatar", "AvatarGroup", "Badge", "Table", "Stat", "Timeline", "DefinitionList", "Kbd", "Code", "Divider"] },
   ]},
-  { title: "Гадаргуу", items: [
-    { href: "/surfaces", label: "Гадаргуу", hint: "Card, Panel, Accordion", icon: "layers", search: ["Card", "Panel", "Accordion", "Container", "Stack"] },
-    { href: "/cards", label: "Карт, самбар", hint: "css: tz-card, tz-panel", icon: "board", search: ["tz-card", "tz-panel", "SectionHead"] },
-    { href: "/board", label: "Түүхийн самбар", hint: "Board, бүтэн жишээ", icon: "sheet", search: ["Board", "StoryBoard", "story"] },
+  { title: "Surfaces", items: [
+    { href: "/surfaces", label: "Surfaces", hint: "Card, Panel, Accordion", icon: "layers", search: ["Card", "Panel", "Accordion", "Container", "Stack"] },
+    { href: "/cards", label: "Cards (CSS)", hint: "tz-card, tz-panel", icon: "board", search: ["tz-card", "tz-panel", "tz-lift", "SectionHead"] },
+    { href: "/board", label: "Story board", hint: "Board, full example", icon: "sheet", search: ["Board", "StoryBoard", "story"] },
+  ]},
+  { title: "Project", items: [
+    { href: "/changelog", label: "Changelog", hint: "recent commits", icon: "clock", search: ["changelog", "commits", "git", "version", "history"] },
   ]},
 ];
 export const SECTIONS: Section[] = GROUPS.flatMap((g) => g.items);

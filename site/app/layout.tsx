@@ -9,8 +9,8 @@ const geologica = Geologica({ subsets: ["cyrillic", "latin"], variable: "--font-
 const mono = JetBrains_Mono({ subsets: ["cyrillic", "latin"], variable: "--font-jbmono", display: "swap" });
 
 export const metadata: Metadata = {
-  title: { template: "%s · Цаагуур UI", default: "Цаагуур UI · the library" },
-  description: "Tsaaguur's own UI library: tokens, type, drawn icons, topic pictograms, marks that move, panels, pills, the story board.",
+  title: { template: "%s · Tsaaguur UI", default: "Tsaaguur UI" },
+  description: "@tsaaguur/ui: a hand-drawn React UI library for Next.js and Tailwind v4. Tokens, 115 icons, animated pictograms, inputs, navigation, feedback, data display, surfaces.",
   robots: { index: false, follow: false },
 };
 

@@ -4,10 +4,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Icon, ThemeToggle, SearchField, ToastProvider } from "@tsaaguur/ui";
 import { GROUPS } from "./sections";
+import pkg from "../../package.json";
 
-/* The library's own shell: a top bar with the mark and the version, a left
-   rail of grouped sections with a search over component names on a desk, a
-   sheet of the same on a phone. Built from the library it documents. */
+/* The site's own shell: a top bar with the mark, the version and the
+   GitHub link, a left rail of grouped sections with a search over
+   component names on a desk, a sheet of the same on a phone. */
 export function Shell({ children }: { children: React.ReactNode }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
@@ -16,8 +17,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
   const ql = q.trim().toLowerCase();
   const groups = ql ? GROUPS.map((g) => ({ ...g, items: g.items.filter((s) => [s.label, s.hint, ...(s.search ?? [])].some((w) => w.toLowerCase().includes(ql))) })).filter((g) => g.items.length) : GROUPS;
   const nav = (
-    <nav className="flex flex-col gap-5" aria-label="Хэсгүүд">
-      <SearchField value={q} onChange={setQ} placeholder="Компонент хайх" />
+    <nav className="flex flex-col gap-5" aria-label="Sections">
+      <SearchField value={q} onChange={setQ} placeholder="Search components" />
       {groups.map((g) => (
         <div key={g.title}>
           <div className="tz-label mb-1.5 px-3">{g.title}</div>
@@ -31,7 +32,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       ))}
-      {!groups.length ? <div className="px-3 text-[13px] text-muted-foreground">Олдсонгүй</div> : null}
+      {!groups.length ? <div className="px-3 text-[13px] text-muted-foreground">No match</div> : null}
     </nav>
   );
   return (
@@ -39,15 +40,16 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <div className="relative z-10 flex min-h-svh flex-col">
         <header className="sticky top-0 z-40 border-b border-hairline bg-background/80 backdrop-blur">
           <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-3 px-4 sm:px-6">
-            <Link href="/" className="group inline-flex items-center gap-2" aria-label="Цаагуур UI">
+            <Link href="/" className="group inline-flex items-center gap-2" aria-label="Tsaaguur UI">
               <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-[8px] bg-[#131518]"><img src="/brand/tsaaguur-mark-light.svg" alt="" aria-hidden className="h-7 w-7" /></span>
-              <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Цаагуур</span>
-              <span className="tz-label hidden rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px] sm:inline">ui · 0.2.0</span>
+              <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Tsaaguur UI</span>
+              <span className="tz-label hidden rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px] sm:inline">v{pkg.version}</span>
             </Link>
             <div className="ml-auto flex items-center gap-2">
-              <a href="https://lab.tsaaguur.mn" className="tz-pill hidden sm:inline-flex">lab.tsaaguur.mn <Icon name="arrow-up-right" className="h-3.5 w-3.5" /></a>
+              <a href="https://github.com/tsaaguur/ui" className="tz-pill" target="_blank" rel="noopener noreferrer"><Icon name="code" className="h-3.5 w-3.5" />GitHub</a>
+              <a href="https://lab.tsaaguur.mn" className="tz-pill hidden sm:inline-flex" target="_blank" rel="noopener noreferrer">lab <Icon name="arrow-up-right" className="h-3.5 w-3.5" /></a>
               <ThemeToggle />
-              <button type="button" onClick={() => setOpen(!open)} aria-label="Цэс" className="tz-hit grid h-9 w-9 place-items-center rounded-full hover:bg-muted lg:hidden"><Icon name={open ? "close" : "menu"} className="h-5 w-5" /></button>
+              <button type="button" onClick={() => setOpen(!open)} aria-label="Menu" className="grid h-9 w-9 place-items-center rounded-full hover:bg-muted lg:hidden"><Icon name={open ? "close" : "menu"} className="h-5 w-5" /></button>
             </div>
           </div>
         </header>
