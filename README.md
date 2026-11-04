@@ -5,7 +5,8 @@ pictograms, marks that move, inputs, navigation, feedback, data display,
 surfaces and the story board. Everything in it was drawn and written for
 Tsaaguur; there is no icon package, no emoji, no borrowed component.
 
-Documented and demoed at https://ui.tsaaguur.mn (source: `tsaaguur/ui-site`).
+Documented and demoed at https://ui.tsaaguur.mn (source: `site/` in this repo,
+a pnpm workspace package; `pnpm site:dev` at the root).
 Used by https://lab.tsaaguur.mn (source: `tsaaguur/lab`).
 
 ## Shape
@@ -63,6 +64,6 @@ The lockfile pins the commit; `pnpm update @tsaaguur/ui` moves to the newest
 ## Repositories
 
 Split out of the tsaaguur monorepo on 2026-11-04 with history (`git subtree
-split`). `tsaaguur/ui` (this, public), `tsaaguur/ui-site` (public, the docs
-site) and `tsaaguur/lab` (private) are separate repositories under the
-`tsaaguur` organization; the product itself is `tsaaguur/tsaaguur` (private).
+split`). This repo holds the library (root) and its docs site (`site/`);
+`tsaaguur/lab` (private) consumes it; the product itself is
+`tsaaguur/tsaaguur` (private). `files` limits the installed package to `src/`.
