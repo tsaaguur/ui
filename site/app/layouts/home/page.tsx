@@ -13,7 +13,7 @@ export default function Page() {
             <div className="tz-panel relative overflow-hidden p-5"><Box ratio="21/9" label="hero · story 1 of 5" /><div className="absolute bottom-5 left-5 right-5 flex items-end justify-between"><span className="tz-kicker"><i />№1 · 7 хоног</span><span className="flex gap-2"><span className="tz-glass-button h-9 w-9"><Icon name="chevron-left" className="h-4 w-4" /></span><span className="tz-glass-button h-9 w-9"><Icon name="chevron-right" className="h-4 w-4" /></span></span></div></div>
             <div className="grid grid-cols-2 gap-3"><Stat label="Сэдэв" value="--" icon="flame" /><Stat label="Пост" value="--" icon="banner" /><Stat label="Мэдээ" value="--" icon="sheet" /><Stat label="Гишүүн" value="-- / 126" icon="dome" /></div>
           </div>
-          <div className="mt-4 overflow-hidden rounded-full border border-hairline"><Ticker items={TOPICS.slice(0, 6).map((t, i) => ({ key: String(i), name: t, tone: (["up", "new", "flat", "down"] as const)[i % 4], label: "--" }))} /></div>
+          <div className="mt-4 overflow-hidden rounded-full border border-hairline"><Ticker items={TOPICS.slice(0, 6).map((t, i) => ({ key: String(i), name: t, tone: (["up", "new", "flat", "down"] as const)[i % 4], label: "--" }))} href={() => null} /></div>
           <div className="mt-6 grid gap-6 @[1100px]:grid-cols-[220px_1fr_260px]">
             <aside className="hidden @[1100px]:block"><div className="tz-label mb-2">Шинэ сэдвүүд</div><ol className="tz-card px-3">{TOPICS.slice(5, 9).map((t, i) => <TopicRow key={t} n={i + 1} name={t} bar={70 - i * 12} />)}</ol></aside>
             <main>
