@@ -47,8 +47,10 @@ a, button { cursor: pointer; }
 
 /* Thin scrollbars everywhere (the browser default is a wide grey bar that
    fights the page, owner 2026-11-04): a hairline thumb, no track. */
-* { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
-::-webkit-scrollbar { width: 7px; height: 7px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; border: 1px solid transparent; background-clip: padding-box; }
-::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); background-clip: padding-box; }
+@layer base {
+  * { scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  ::-webkit-scrollbar { width: 7px; height: 7px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; border: 1px solid transparent; background-clip: padding-box; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--muted-foreground); background-clip: padding-box; }
+}
