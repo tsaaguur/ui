@@ -19,9 +19,9 @@ export function Stage({ title, code, note, children, dark = false }: { title: st
     <section>
       <h2 className="tz-display text-[20px] font-semibold">{title}</h2>
       {note ? <p className="mt-1 text-[13.5px] text-muted-foreground">{note}</p> : null}
-      <div className={`tz-card mt-3 overflow-hidden ${dark ? "dark bg-[#121212] text-[#e8eaed]" : ""}`}>
+      <div className={`tz-card mt-3 ${dark ? "dark bg-[#121212] text-[#e8eaed]" : ""}`}>
         <div className="p-5">{children}</div>
-        {code ? <CodeBlock code={code} className="border-t border-hairline" /> : null}
+        {code ? <CodeBlock code={code} className="overflow-hidden rounded-b-[11px] border-t border-hairline" /> : null}
       </div>
     </section>
   );
