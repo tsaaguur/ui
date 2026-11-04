@@ -27,7 +27,7 @@ src/
   glyph.tsx       Glyph, glyphKind (topic pictograms, animate draw|idle|none)
   marks.tsx       StateMark, LiveDot, Sprockets, Stamp, DrawnBars
   spark.tsx       Spark (server-rendered sparkline)
-  pill.tsx        Pill, Button
+  pill.tsx        Pill, Button, IconButton, iconMotion (press animations)
   inputs.tsx      Field, Input, Textarea, SearchField, Select, Checkbox, RadioGroup, Switch, Slider, Segmented, Chip
   navigation.tsx  Tabs, Breadcrumb, Pagination, Menu, Stepper
   feedback.tsx    Alert, ToastProvider/useToast, Dialog, Drawer, Tooltip, Progress, Ring, Spinner, Skeleton, Empty
