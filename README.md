@@ -1,5 +1,11 @@
 # @tsaaguur/ui
 
+> Tsaaguur's own React UI library for Next.js and Tailwind v4: design tokens,
+> 115 hand-drawn SVG icons, animated topic pictograms, inputs, navigation,
+> feedback, data display, surfaces and a story board. Made in Ulaanbaatar for
+> [tsaaguur.mn](https://tsaaguur.mn), the Mongolian media trends dashboard.
+> Цаагуурын өөрийн UI сан: тэмдэг, дүрс, хөдөлгөөнт пиктограм, бүрэлдэхүүн.
+
 Tsaaguur's own UI library: tokens, type, 115 drawn icons, 16 animated topic
 pictograms, marks that move, inputs, navigation, feedback, data display,
 surfaces and the story board. Everything in it was drawn and written for
@@ -67,3 +73,13 @@ Split out of the tsaaguur monorepo on 2026-11-04 with history (`git subtree
 split`). This repo holds the library (root) and its docs site (`site/`);
 `tsaaguur/lab` (private) consumes it; the product itself is
 `tsaaguur/tsaaguur` (private). `files` limits the installed package to `src/`.
+
+## Keywords
+
+React · Next.js · Tailwind CSS · TypeScript · UI library · design system ·
+component library · SVG icons · hand-drawn icons · animated pictograms ·
+Mongolia · Mongolian · Монгол · Цаагуур · Tsaaguur
+
+## License
+
+Unlicensed for now: the source is public to read; ask before reusing it.
