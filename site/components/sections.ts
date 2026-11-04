@@ -38,3 +38,18 @@ export const GROUPS: { title: string; items: Section[] }[] = [
   ]},
 ];
 export const SECTIONS: Section[] = GROUPS.flatMap((g) => g.items);
+
+/* The Layouts section: the product's pages as structure only, no data. */
+export const LAYOUT_GROUPS: { title: string; items: Section[] }[] = [
+  { title: "Layouts", items: [
+    { href: "/layouts", label: "Overview", hint: "all pages", icon: "layers", search: ["layouts", "pages", "wireframe"] },
+    { href: "/layouts/home", label: "Home", hint: "hero, topics, feed, rails", icon: "ger", search: ["home", "hero", "feed", "rail"] },
+    { href: "/layouts/topic", label: "Topic", hint: "figures, how it spread", icon: "flame", search: ["topic", "tag", "history"] },
+    { href: "/layouts/stories", label: "Stories", hint: "compact boards", icon: "sheet", search: ["stories", "board"] },
+    { href: "/layouts/story", label: "Story", hint: "the full board", icon: "board", search: ["story", "frames"] },
+    { href: "/layouts/parliament", label: "Parliament", hint: "podium, leaderboard", icon: "dome", search: ["parliament", "members", "rating"] },
+    { href: "/layouts/now", label: "Now", hint: "the live list", icon: "pulse", search: ["now", "live"] },
+    { href: "/layouts/login", label: "Sign-in gate", hint: "blurred preview, card", icon: "lock", search: ["login", "gate", "google"] },
+  ]},
+];
+export const LAYOUTS: Section[] = LAYOUT_GROUPS.flatMap((g) => g.items);

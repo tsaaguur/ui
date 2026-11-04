@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Icon, ThemeToggle, SearchField, ToastProvider } from "@tsaaguur/ui";
-import { GROUPS } from "./sections";
+import { GROUPS, LAYOUT_GROUPS } from "./sections";
 import { CommitChip } from "./commit-chip";
 import type { Commit } from "./commits";
 import pkg from "../../package.json";
@@ -15,9 +15,11 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
-  const active = (h: string) => (h === "/" ? path === "/" : path.startsWith(h));
+  const inLayouts = path.startsWith("/layouts");
+  const active = (h: string) => (h === "/" || h === "/layouts" ? path === h : path.startsWith(h));
   const ql = q.trim().toLowerCase();
-  const groups = ql ? GROUPS.map((g) => ({ ...g, items: g.items.filter((s) => [s.label, s.hint, ...(s.search ?? [])].some((w) => w.toLowerCase().includes(ql))) })).filter((g) => g.items.length) : GROUPS;
+  const base = inLayouts ? LAYOUT_GROUPS : GROUPS;
+  const groups = ql ? base.map((g) => ({ ...g, items: g.items.filter((s) => [s.label, s.hint, ...(s.search ?? [])].some((w) => w.toLowerCase().includes(ql))) })).filter((g) => g.items.length) : base;
   const nav = (
     <nav className="flex flex-col gap-5" aria-label="Sections">
       <SearchField value={q} onChange={setQ} placeholder="Search components" />
@@ -47,6 +49,10 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
               <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Tsaaguur UI</span>
               <span className="tz-label hidden rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px] sm:inline">v{pkg.version}</span>
             </Link>
+            <nav className="ml-2 flex items-center gap-0.5 rounded-full border border-hairline p-0.5" aria-label="Site sections">
+              <Link href="/" className={`rounded-full px-3 py-1.5 text-[12.5px] font-medium transition-colors ${!inLayouts ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>Components</Link>
+              <Link href="/layouts" className={`rounded-full px-3 py-1.5 text-[12.5px] font-medium transition-colors ${inLayouts ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>Layouts</Link>
+            </nav>
             <div className="ml-auto flex items-center gap-2">
               <a href="https://github.com/tsaaguur/ui" className="tz-pill" target="_blank" rel="noopener noreferrer"><Icon name="code" className="h-3.5 w-3.5" />GitHub</a>
               <a href="https://lab.tsaaguur.mn" className="tz-pill hidden sm:inline-flex" target="_blank" rel="noopener noreferrer">lab <Icon name="arrow-up-right" className="h-3.5 w-3.5" /></a>
