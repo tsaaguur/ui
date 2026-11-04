@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm sync && next dev -p 3012",
-    "build": "pnpm sync && next build && cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
+    "dev": "next dev -p 3012",
+    "build": "next build && cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
     "start": "next start -p 3011",
-    "typecheck": "pnpm sync && tsc --noEmit",
-    "sync": "rsync -a --delete ../ui/src/ ./ui/"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tsaaguur/ui": "github:tsaaguur/ui",
     "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0"

@@ -1,3 +1,5 @@
-
-# the library source, copied in by `pnpm sync` from ../ui/src
-/ui
+node_modules
+.next
+*.tsbuildinfo
+next-env.d.ts
+.env

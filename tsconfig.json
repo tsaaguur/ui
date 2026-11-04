@@ -25,12 +25,6 @@
     "paths": {
       "@/*": [
         "./*"
-      ],
-      "@tsaaguur/ui": [
-        "./ui/index.ts"
-      ],
-      "@tsaaguur/ui/*": [
-        "./ui/*"
       ]
     }
   },

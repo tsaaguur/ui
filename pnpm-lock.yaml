@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@tsaaguur/ui':
+        specifier: github:tsaaguur/ui
+        version: https://codeload.github.com/tsaaguur/ui/tar.gz/767e1be868a0a294731cee658ccc6efd74684ce5(next@16.0.10(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next:
         specifier: 16.0.10
         version: 16.0.10(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -363,6 +366,14 @@ packages:
 
   '@tailwindcss/postcss@4.3.4':
     resolution: {integrity: sha512-6O0QLY+1CseO8ivlYK2Y7IxNPaQ8D5ypxrV+ws34mbxknWH824J+gEWtJ0gyFiYAudmdEeXdF8kqwgXIaZRyHw==}
+
+  '@tsaaguur/ui@https://codeload.github.com/tsaaguur/ui/tar.gz/767e1be868a0a294731cee658ccc6efd74684ce5':
+    resolution: {tarball: https://codeload.github.com/tsaaguur/ui/tar.gz/767e1be868a0a294731cee658ccc6efd74684ce5}
+    version: 0.2.0
+    peerDependencies:
+      next: '>=15'
+      react: '>=19'
+      react-dom: '>=19'
 
   '@types/node@22.20.5':
     resolution: {integrity: sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA==}
@@ -792,6 +803,12 @@ snapshots:
       '@tailwindcss/oxide': 4.3.4
       postcss: 8.5.32
       tailwindcss: 4.3.4
+
+  '@tsaaguur/ui@https://codeload.github.com/tsaaguur/ui/tar.gz/767e1be868a0a294731cee658ccc6efd74684ce5(next@16.0.10(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      next: 16.0.10(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@types/node@22.20.5':
     dependencies:

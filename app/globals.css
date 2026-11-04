@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "../ui/styles.css";
-@source "../ui";
+@import "@tsaaguur/ui/styles.css";
+@source "../node_modules/@tsaaguur/ui/src";
 
 @custom-variant dark (&:is(.dark *));
 
