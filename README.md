@@ -63,10 +63,10 @@ This folder is self-contained (own `package.json`, no imports from outside
 
 ```bash
 git subtree split -P ui -b ui-only          # in the tsaaguur clone
-git push <org>/ui.git ui-only:main
+git push git@github.com:Tsaaguur/ui.git ui-only:main
 ```
 
 Then the apps install it as a real dependency (publish from the new repo,
-or `pnpm add github:<org>/ui`) and drop `pnpm sync`; `transpilePackages:
+or `pnpm add github:Tsaaguur/ui`) and drop `pnpm sync`; `transpilePackages:
 ["@tsaaguur/ui"]` in `next.config` replaces the tsconfig path. `lab/` and
 `ui-site/` split the same way (`git subtree split -P lab`, `-P ui-site`).
