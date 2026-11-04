@@ -5,8 +5,8 @@ pictograms, marks that move, inputs, navigation, feedback, data display,
 surfaces and the story board. Everything in it was drawn and written for
 Tsaaguur; there is no icon package, no emoji, no borrowed component.
 
-Documented and demoed at https://ui.tsaaguur.mn (source: `../ui-site`).
-Used by https://lab.tsaaguur.mn (source: `../lab`).
+Documented and demoed at https://ui.tsaaguur.mn (source: `tsaaguur/ui-site`).
+Used by https://lab.tsaaguur.mn (source: `tsaaguur/lab`).
 
 ## Shape
 
@@ -28,22 +28,26 @@ src/
   index.ts        the public surface
 ```
 
-## Using it from a Next app (today)
+## Using it from a Next app
 
-The apps copy the source in at build time; no symlink, no workspace (a
-symlinked package resolved `react` from its own folder and would have
-bundled a second React):
+Install it straight from this repository (public, no registry needed):
 
-```json
-"scripts": { "sync": "rsync -a --delete ../ui/src/ ./ui/", "dev": "pnpm sync && next dev", "build": "pnpm sync && next build" }
+```bash
+pnpm add github:tsaaguur/ui
 ```
 
-`tsconfig.json` paths: `"@tsaaguur/ui": ["./ui/index.ts"]`; `app/globals.css`:
-`@import "tailwindcss"; @import "../ui/styles.css"; @source "../ui";` plus the
-app's `@theme inline` bridge of the variables to Tailwind names. The copy
-(`<app>/ui`) is git-ignored.
+`next.config.mjs`: `transpilePackages: ["@tsaaguur/ui"]` (the package ships
+TypeScript source, Next compiles it). `app/globals.css`:
 
-Peer requirements: React 19, Next 15+ (Link), Tailwind v4.
+```css
+@import "tailwindcss";
+@import "@tsaaguur/ui/styles.css";
+@source "../node_modules/@tsaaguur/ui/src";
+```
+
+plus the app's `@theme inline` bridge of the variables to Tailwind names.
+The lockfile pins the commit; `pnpm update @tsaaguur/ui` moves to the newest
+`main`. Peer requirements: React 19, Next 15+ (Link), Tailwind v4.
 
 ## Rules
 
@@ -56,17 +60,9 @@ Peer requirements: React 19, Next 15+ (Link), Tailwind v4.
 - Every mark drawn on the 24 grid, stroke 1.75, round caps.
 - Controls are ours: no native select, checkbox or range.
 
-## Splitting into its own repository (planned)
+## Repositories
 
-This folder is self-contained (own `package.json`, no imports from outside
-`src/`). To move it out of `tsaaguur` with history:
-
-```bash
-git subtree split -P ui -b ui-only          # in the tsaaguur clone
-git push git@github.com:Tsaaguur/ui.git ui-only:main
-```
-
-Then the apps install it as a real dependency (publish from the new repo,
-or `pnpm add github:Tsaaguur/ui`) and drop `pnpm sync`; `transpilePackages:
-["@tsaaguur/ui"]` in `next.config` replaces the tsconfig path. `lab/` and
-`ui-site/` split the same way (`git subtree split -P lab`, `-P ui-site`).
+Split out of the tsaaguur monorepo on 2026-11-04 with history (`git subtree
+split`). `tsaaguur/ui` (this, public), `tsaaguur/ui-site` (public, the docs
+site) and `tsaaguur/lab` (private) are separate repositories under the
+`tsaaguur` organization; the product itself is `tsaaguur/tsaaguur` (private).
