@@ -4,12 +4,14 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Icon, ThemeToggle, SearchField, ToastProvider } from "@tsaaguur/ui";
 import { GROUPS } from "./sections";
+import { CommitChip } from "./commit-chip";
+import type { Commit } from "./commits";
 import pkg from "../../package.json";
 
 /* The site's own shell: a top bar with the mark, the version and the
    GitHub link, a left rail of grouped sections with a search over
    component names on a desk, a sheet of the same on a phone. */
-export function Shell({ children }: { children: React.ReactNode }) {
+export function Shell({ children, commits, now }: { children: React.ReactNode; commits: Commit[] | null; now: number }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const [q, setQ] = useState("");
@@ -56,8 +58,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex w-full max-w-[1400px] flex-1 gap-8 px-4 py-6 sm:px-6">
           <aside className="hidden w-[250px] shrink-0 lg:block"><div className="sticky top-20 max-h-[calc(100svh-6rem)] overflow-auto pr-1">{nav}</div></aside>
           {open ? <div className="fixed inset-x-0 top-14 bottom-0 z-30 overflow-auto border-b border-hairline bg-background p-4 lg:hidden">{nav}</div> : null}
-          <main className="min-w-0 flex-1">{children}</main>
+          <main className="min-w-0 flex-1 pb-16">{children}</main>
         </div>
+        <CommitChip commits={commits} now={now} />
       </div>
     </ToastProvider>
   );

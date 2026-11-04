@@ -2,10 +2,7 @@ import Link from "next/link";
 import { Icon, Glyph, Button, Pill } from "@tsaaguur/ui";
 import { SECTIONS } from "@/components/sections";
 import { CodeBlock } from "@/components/code";
-import { CommitList, fetchCommits } from "@/components/commits";
 import pkg from "../../package.json";
-
-export const revalidate = 600;
 
 const STEPS: [string, string, string][] = [
   ["1. Install", "sh", "pnpm add github:tsaaguur/ui"],
@@ -14,8 +11,7 @@ const STEPS: [string, string, string][] = [
   ["4. Use it", "tsx", 'import { Button, Icon, Glyph } from "@tsaaguur/ui";\n\n<Button tone="brand" icon="arrow-right">Open</Button>\n<Icon name="dome" className="h-5 w-5" />\n<Glyph name="цасан шуурга" size={32} animate="idle" />'],
 ];
 
-export default async function Home() {
-  const [commits, now] = [await fetchCommits(5), Date.now()];
+export default function Home() {
   return (
     <article className="max-w-[920px]">
       <div className="tz-label">@tsaaguur/ui · v{pkg.version} · MIT</div>
@@ -63,11 +59,6 @@ export default async function Home() {
         <li className="tz-card p-4"><Glyph name="н.учрал" size={28} animate="idle" className="mb-2" /><b>Every mark is drawn</b> on the 24 grid, stroke 1.75, round caps. Controls are ours: no native select, checkbox or range.</li>
       </ul>
 
-      <div className="mt-12 flex items-end justify-between gap-3">
-        <h2 className="tz-display text-[24px] font-semibold">Recent commits</h2>
-        <Pill href="/changelog" icon="arrow-right">Changelog</Pill>
-      </div>
-      <div className="tz-card mt-4 px-4 py-2"><CommitList commits={commits} now={now} /></div>
     </article>
   );
 }
