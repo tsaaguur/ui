@@ -49,6 +49,9 @@
 .tz-panel { position: relative; border: 1px solid var(--hairline); border-radius: 12px; background: var(--card); }
 .tz-panel::after { content: ""; position: absolute; inset: 5px; border: 1px solid var(--hairline); border-radius: 8px; pointer-events: none; }
 .tz-strip { scrollbar-width: none; }
+/* a scroller with no visible bar at all (short rails, snap strips) */
+.tz-noscroll { scrollbar-width: none; }
+.tz-noscroll::-webkit-scrollbar { display: none; }
 .tz-strip::-webkit-scrollbar { display: none; }
 
 /* hero */

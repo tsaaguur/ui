@@ -56,7 +56,7 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
           </div>
         </header>
         <div className="mx-auto flex w-full max-w-[1400px] flex-1 gap-8 px-4 py-6 sm:px-6">
-          <aside className="hidden w-[250px] shrink-0 lg:block"><div className="sticky top-20 max-h-[calc(100svh-6rem)] overflow-auto pr-1">{nav}</div></aside>
+          <aside className="hidden w-[250px] shrink-0 lg:block"><div className="tz-noscroll sticky top-20 max-h-[calc(100svh-6rem)] overflow-auto pr-1">{nav}</div></aside>
           {open ? <div className="fixed inset-x-0 top-14 bottom-0 z-30 overflow-auto border-b border-hairline bg-background p-4 lg:hidden">{nav}</div> : null}
           <main className="min-w-0 flex-1 pb-16">{children}</main>
         </div>
