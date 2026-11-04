@@ -49,7 +49,7 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
               <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Tsaaguur UI</span>
               <span className="tz-label hidden rounded-full border border-hairline px-1.5 py-0.5 text-[9.5px] sm:inline">v{pkg.version}</span>
             </Link>
-            <nav className="ml-2 flex items-center gap-0.5 rounded-full border border-hairline p-0.5" aria-label="Site sections">
+            <nav className="ml-2 hidden items-center gap-0.5 rounded-full border border-hairline p-0.5 sm:flex" aria-label="Site sections">
               <Link href="/" className={`rounded-full px-3 py-1.5 text-[12.5px] font-medium transition-colors ${!inLayouts ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>Components</Link>
               <Link href="/layouts" className={`rounded-full px-3 py-1.5 text-[12.5px] font-medium transition-colors ${inLayouts ? "bg-foreground text-background" : "text-muted-foreground hover:text-foreground"}`}>Layouts</Link>
             </nav>
@@ -63,7 +63,7 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
         </header>
         <div className="flex w-full flex-1">
           <aside className="hidden w-[264px] shrink-0 border-r border-hairline lg:block"><div className="tz-noscroll sticky top-14 h-[calc(100svh-3.5rem)] overflow-auto px-4 py-5">{nav}</div></aside>
-          {open ? <div className="fixed inset-x-0 top-14 bottom-0 z-30 overflow-auto border-b border-hairline bg-background p-4 lg:hidden">{nav}</div> : null}
+          {open ? <div className="fixed inset-x-0 top-14 bottom-0 z-30 overflow-auto border-b border-hairline bg-background p-4 lg:hidden"><div className="mb-4 flex gap-2 sm:hidden"><Link href="/" onClick={() => setOpen(false)} className={`tz-pill ${!inLayouts ? "is-on" : ""}`}>Components</Link><Link href="/layouts" onClick={() => setOpen(false)} className={`tz-pill ${inLayouts ? "is-on" : ""}`}>Layouts</Link></div>{nav}</div> : null}
           <main className="min-w-0 flex-1 px-4 py-6 pb-20 sm:px-6 lg:px-10 lg:py-8 2xl:px-14">{children}</main>
         </div>
         <CommitChip commits={commits} now={now} />
