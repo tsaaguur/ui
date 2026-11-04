@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3012",
-    "build": "next build && cp -r .next/static .next/standalone/.next/static && cp -r public .next/standalone/public",
+    "build": "next build && cp -r .next/static .next/standalone/site/.next/static && cp -r public .next/standalone/site/public",
     "start": "next start -p 3011",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@tsaaguur/ui": "github:tsaaguur/ui",
+    "@tsaaguur/ui": "workspace:*",
     "next": "16.0.10",
     "react": "19.2.0",
     "react-dom": "19.2.0"
