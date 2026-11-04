@@ -80,6 +80,6 @@ React · Next.js · Tailwind CSS · TypeScript · UI library · design system ·
 component library · SVG icons · hand-drawn icons · animated pictograms ·
 Mongolia · Mongolian · Монгол · Цаагуур · Tsaaguur
 
-## License
+## Contributing and license
 
-Unlicensed for now: the source is public to read; ask before reusing it.
+[CONTRIBUTING.md](CONTRIBUTING.md) has the rules and the checks. MIT License, see [LICENSE](LICENSE).
