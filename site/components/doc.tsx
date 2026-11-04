@@ -1,24 +1,31 @@
 import { CodeBlock } from "./code";
+import { Toc } from "./toc";
 
 /* The page furniture of the library site: a title block with the import
-   line, a demo stage with its code under it, a props table. */
+   line, demo stages with their code, a props table, the "on this page"
+   column on wide screens. */
+export const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9а-яөү]+/gi, "-").replace(/(^-|-$)/g, "");
+
 export function Doc({ kicker, title, lead, imports, children }: { kicker: string; title: string; lead: string; imports?: string[]; children: React.ReactNode }) {
   return (
-    <article className="max-w-[920px]">
-      <div className="tz-label">{kicker}</div>
-      <h1 className="tz-display mt-1 text-[34px] font-bold leading-none sm:text-[44px]">{title}</h1>
-      <p className="mt-4 max-w-[70ch] text-[15px] leading-relaxed text-muted-foreground">{lead}</p>
-      {imports?.length ? <CodeBlock code={`import { ${imports.join(", ")} } from "@tsaaguur/ui";`} lang="ts" className="mt-5 overflow-hidden rounded-[10px] border border-hairline" /> : null}
-      <div className="mt-8 flex flex-col gap-10">{children}</div>
-    </article>
+    <div className="xl:grid xl:grid-cols-[minmax(0,1fr)_200px] xl:gap-12">
+      <article className="min-w-0">
+        <div className="tz-label">{kicker}</div>
+        <h1 className="tz-display mt-1 text-[34px] font-bold leading-none sm:text-[44px]">{title}</h1>
+        <p className="mt-4 max-w-[72ch] text-[15px] leading-relaxed text-muted-foreground">{lead}</p>
+        {imports?.length ? <CodeBlock code={`import { ${imports.join(", ")} } from "@tsaaguur/ui";`} lang="ts" className="mt-5 overflow-hidden rounded-[10px] border border-hairline" /> : null}
+        <div className="mt-8 flex flex-col gap-10">{children}</div>
+      </article>
+      <Toc />
+    </div>
   );
 }
 
 export function Stage({ title, code, note, children, dark = false }: { title: string; code?: string; note?: string; children: React.ReactNode; dark?: boolean }) {
   return (
     <section>
-      <h2 className="tz-display text-[20px] font-semibold">{title}</h2>
-      {note ? <p className="mt-1 text-[13.5px] text-muted-foreground">{note}</p> : null}
+      <h2 id={slug(title)} className="tz-display scroll-mt-20 text-[20px] font-semibold">{title}</h2>
+      {note ? <p className="mt-1 max-w-[80ch] text-[13.5px] text-muted-foreground">{note}</p> : null}
       <div className={`tz-card mt-3 ${dark ? "dark bg-[#121212] text-[#e8eaed]" : ""}`}>
         <div className="p-5">{children}</div>
         {code ? <CodeBlock code={code} className="overflow-hidden rounded-b-[11px] border-t border-hairline" /> : null}

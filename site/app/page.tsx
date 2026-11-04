@@ -13,10 +13,10 @@ const STEPS: [string, string, string][] = [
 
 export default function Home() {
   return (
-    <article className="max-w-[920px]">
+    <article className="min-w-0">
       <div className="tz-label">@tsaaguur/ui · v{pkg.version} · MIT</div>
       <h1 className="tz-display mt-1 text-[40px] font-bold leading-[1] sm:text-[56px]">A UI library drawn by hand</h1>
-      <p className="mt-5 max-w-[62ch] text-[16px] leading-relaxed text-muted-foreground">
+      <p className="mt-5 max-w-[70ch] text-[16px] leading-relaxed text-muted-foreground">
         Tokens, three typefaces, 115 icons, 16 animated pictograms, inputs, navigation, feedback, data display, surfaces and a story board. React 19, Next.js 15+, Tailwind v4, TypeScript. No icon package, no emoji, one easing curve.
       </p>
       <div className="mt-6 flex flex-wrap gap-2">
@@ -28,7 +28,7 @@ export default function Home() {
 
       <h2 className="tz-display mt-12 text-[24px] font-semibold">Quick start</h2>
       <p className="mt-1 text-[13.5px] text-muted-foreground">Installs straight from the repository; the lockfile pins the commit. Needs React 19, Next 15+ and Tailwind v4 in the app.</p>
-      <ol className="mt-4 grid gap-3">
+      <ol className="mt-4 grid gap-3 lg:grid-cols-2">
         {STEPS.map(([t, lang, code]) => (
           <li key={t} className="tz-card overflow-hidden">
             <div className="tz-label px-4 pt-3">{t}</div>
@@ -38,7 +38,7 @@ export default function Home() {
       </ol>
 
       <h2 className="tz-display mt-12 text-[24px] font-semibold">Components</h2>
-      <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+      <ol className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
         {SECTIONS.filter((s) => s.href !== "/").map((s, i) => (
           <li key={s.href}>
             <Link href={s.href} className="tz-card group flex items-center gap-4 p-4">
@@ -52,7 +52,7 @@ export default function Home() {
       </ol>
 
       <h2 className="tz-display mt-12 text-[24px] font-semibold">Rules</h2>
-      <ul className="mt-4 grid gap-3 text-[14px] leading-relaxed sm:grid-cols-2">
+      <ul className="mt-4 grid gap-3 text-[14px] leading-relaxed sm:grid-cols-2 xl:grid-cols-4">
         <li className="tz-card p-4"><Glyph name="цаг агаар" size={28} animate="idle" className="mb-2" /><b>One easing.</b> Everything moves on <code className="tz-num">--ease</code>; nothing bounces; all motion stops under <code className="tz-num">prefers-reduced-motion</code>.</li>
         <li className="tz-card p-4"><Glyph name="хууль батлах" size={28} animate="idle" className="mb-2" /><b>No left-border accent bars.</b> Tint, border, spacing, weight or a leading mark instead.</li>
         <li className="tz-card p-4"><Glyph name="төсвийн тодотгол" size={28} animate="idle" className="mb-2" /><b>Mono for numbers and labels</b> (<code className="tz-num">tz-num</code>, <code className="tz-num">tz-label</code>); the display face for names.</li>

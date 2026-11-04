@@ -41,7 +41,7 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
     <ToastProvider>
       <div className="relative z-10 flex min-h-svh flex-col">
         <header className="sticky top-0 z-40 border-b border-hairline bg-background/80 backdrop-blur">
-          <div className="mx-auto flex h-14 max-w-[1400px] items-center gap-3 px-4 sm:px-6">
+          <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
             <Link href="/" className="group inline-flex items-center gap-2" aria-label="Tsaaguur UI">
               <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-[8px] bg-[#131518]"><img src="/brand/tsaaguur-mark-light.svg" alt="" aria-hidden className="h-7 w-7" /></span>
               <span className="tz-display text-[17px] font-bold leading-none tracking-tight">Tsaaguur UI</span>
@@ -55,10 +55,10 @@ export function Shell({ children, commits, now }: { children: React.ReactNode; c
             </div>
           </div>
         </header>
-        <div className="mx-auto flex w-full max-w-[1400px] flex-1 gap-8 px-4 py-6 sm:px-6">
-          <aside className="hidden w-[250px] shrink-0 lg:block"><div className="tz-noscroll sticky top-20 max-h-[calc(100svh-6rem)] overflow-auto pr-1">{nav}</div></aside>
+        <div className="flex w-full flex-1">
+          <aside className="hidden w-[264px] shrink-0 border-r border-hairline lg:block"><div className="tz-noscroll sticky top-14 h-[calc(100svh-3.5rem)] overflow-auto px-4 py-5">{nav}</div></aside>
           {open ? <div className="fixed inset-x-0 top-14 bottom-0 z-30 overflow-auto border-b border-hairline bg-background p-4 lg:hidden">{nav}</div> : null}
-          <main className="min-w-0 flex-1 pb-16">{children}</main>
+          <main className="min-w-0 flex-1 px-4 py-6 pb-20 sm:px-6 lg:px-10 lg:py-8 2xl:px-14">{children}</main>
         </div>
         <CommitChip commits={commits} now={now} />
       </div>
