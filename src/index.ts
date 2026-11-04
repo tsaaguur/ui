@@ -7,7 +7,7 @@ export { SectionHead } from "./section-head";
 export { ThemeToggle, THEME_SCRIPT } from "./theme-toggle";
 export { Ticker, type TickerItem } from "./ticker";
 export { Board } from "./board";
-export { Pill, Button } from "./pill";
+export { Pill, Button, IconButton, iconMotion, type ButtonTone, type ButtonSize } from "./pill";
 export { Field, Input, Textarea, SearchField, Select, Checkbox, RadioGroup, Switch, Slider, Segmented, Chip, type Option } from "./inputs";
 export { Tabs, Breadcrumb, Pagination, Menu, Stepper, type MenuItem } from "./navigation";
 export { Alert, ToastProvider, useToast, Dialog, Drawer, Tooltip, Progress, Ring, Spinner, Skeleton, Empty, type Tone } from "./feedback";
