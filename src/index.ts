@@ -1,4 +1,4 @@
-// @tsaaguur/ui 0.2.0 (2026-11-04)
+// @tsaaguur/ui 0.3.0 (2026-11-06)
 export { Icon, ICON_NAMES, ICON_GROUPS, type IconName } from "./icons";
 export { Glyph, glyphKind, GLYPH_KINDS, type GlyphKind } from "./glyph";
 export { StateMark, LiveDot, Sprockets, Stamp, DrawnBars } from "./marks";
@@ -12,5 +12,6 @@ export { Field, Input, Textarea, SearchField, Select, Checkbox, RadioGroup, Swit
 export { Tabs, Breadcrumb, Pagination, Menu, Stepper, type MenuItem } from "./navigation";
 export { Alert, ToastProvider, useToast, Dialog, Drawer, Tooltip, Progress, Ring, Spinner, Skeleton, Empty, type Tone } from "./feedback";
 export { Avatar, AvatarGroup, Badge, Table, Stat, Timeline, DefinitionList, Kbd, Code, Divider, type Column } from "./display";
+export { Bar, BarList, BarFill, type BarPart, type BarProps, type BarListItem, type BarListProps, type BarSize } from "./bars";
 export { Card, Panel, Accordion, Container, Stack } from "./surfaces";
 export type { StoryBoard, StoryFrame, StoryItem, StorySrc } from "./types";

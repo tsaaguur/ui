@@ -26,7 +26,7 @@ export const GROUPS: { title: string; items: Section[] }[] = [
     { href: "/feedback", label: "Feedback", hint: "Alert, Toast, Dialog", icon: "bell", search: ["Alert", "Toast", "useToast", "Dialog", "Drawer", "Tooltip", "Progress", "Ring", "Spinner", "Skeleton", "Empty"] },
   ]},
   { title: "Data", items: [
-    { href: "/display", label: "Data display", hint: "Table, Stat, Timeline", icon: "table", search: ["Avatar", "AvatarGroup", "Badge", "Table", "Stat", "Timeline", "DefinitionList", "Kbd", "Code", "Divider"] },
+    { href: "/display", label: "Data display", hint: "Table, Stat, bars", icon: "table", search: ["Avatar", "AvatarGroup", "Badge", "Table", "Stat", "Bar", "BarList", "BarFill", "bars", "breakdown", "Timeline", "DefinitionList", "Kbd", "Code", "Divider"] },
   ]},
   { title: "Surfaces", items: [
     { href: "/surfaces", label: "Surfaces", hint: "Card, Panel, Accordion", icon: "layers", search: ["Card", "Panel", "Accordion", "Container", "Stack"] },
