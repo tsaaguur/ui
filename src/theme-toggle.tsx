@@ -4,7 +4,11 @@ import { Icon } from "./icons";
 
 const KEY = "tsaaguur-lab-theme";
 
-export function ThemeToggle({ className = "" }: { className?: string }) {
+/** Light / dark switch. By default a round icon button. Pass `children` (a
+    function of the current mode, null before the first paint) to draw your
+    own content, for example an icon over a word in a nav rail: then
+    `className` is the whole class of the button and nothing is added to it. */
+export function ThemeToggle({ className = "", children }: { className?: string; children?: (dark: boolean | null) => React.ReactNode }) {
   const [dark, setDark] = useState<boolean | null>(null);
   useEffect(() => { setDark(document.documentElement.classList.contains("dark")); }, []);
   const toggle = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,6 +30,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
     });
     vt.finished.finally(() => { delete root.dataset.tzVt; root.classList.remove("tz-theme-swap"); root.style.removeProperty("--tz-clip-from"); });
   };
+  if (children) return <button type="button" onClick={toggle} aria-label={dark ? "Гэрэл горим" : "Харанхуй горим"} className={className}>{children(dark)}</button>;
   return (
     <button type="button" onClick={toggle} aria-label={dark ? "Гэрэл горим" : "Харанхуй горим"} className={`tz-hit grid h-9 w-9 place-items-center rounded-full text-foreground/80 transition-colors hover:bg-muted ${className}`}>
       {dark === null ? <span className="h-4 w-4" /> : dark ? <Icon name="sun" className="h-4 w-4" /> : <Icon name="moon" className="h-4 w-4" />}

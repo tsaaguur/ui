@@ -1,4 +1,4 @@
-// @tsaaguur/ui 0.3.0 (2026-11-06)
+// @tsaaguur/ui 0.3.1 (2026-11-06)
 export { Icon, ICON_NAMES, ICON_GROUPS, type IconName } from "./icons";
 export { Glyph, glyphKind, GLYPH_KINDS, type GlyphKind } from "./glyph";
 export { StateMark, LiveDot, Sprockets, Stamp, DrawnBars } from "./marks";
