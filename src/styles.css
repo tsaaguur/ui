@@ -39,6 +39,8 @@
 .tz-button.is-brand:hover { background: var(--brand-strong); }
 .tz-button.is-quiet { background: transparent; color: var(--foreground); border-color: var(--hairline); }
 .tz-button.is-quiet:hover { background: var(--muted); border-color: var(--border); }
+.tz-button.is-soft { background: var(--muted); color: var(--foreground); }
+.tz-button.is-soft:hover { background: color-mix(in oklab, var(--muted) 70%, var(--foreground) 8%); }
 .tz-button.is-ghost { background: transparent; color: var(--foreground); }
 .tz-button.is-ghost:hover { background: var(--muted); }
 .tz-button.is-danger { background: var(--down); color: #fff; }

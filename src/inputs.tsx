@@ -164,14 +164,20 @@ export function Slider({ value, onChange, min = 0, max = 100, step = 1, label, f
   );
 }
 
-export function Segmented({ options, value, onChange, label, className = "" }: { options: { value: string; label: string; icon?: IconName }[]; value: string; onChange: (v: string) => void; label?: string; className?: string }) {
+export function Segmented<T extends string = string>({ options, value, onChange, label, quiet = false, size = "md", className = "" }: { options: { value: T; label: string; icon?: IconName; disabled?: boolean }[]; value: T; onChange: (v: T) => void; label?: string; quiet?: boolean; size?: "sm" | "md"; className?: string }) {
+  // quiet (2026-11-09, from the admin pages' PillGroup): no track, the active pill is the only fill, for a toolbar where the control recedes until used
+  const pad = size === "sm" ? "px-2.5 py-1 text-[11.5px]" : "px-3 py-1.5 text-[12.5px]";
   return (
-    <div role="group" aria-label={label} className={`inline-flex rounded-full bg-muted p-0.5 ${className}`}>
-      {options.map((o) => (
-        <button key={o.value} type="button" aria-pressed={o.value === value} onClick={() => onChange(o.value)} className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[12.5px] font-semibold transition-colors ${o.value === value ? "bg-card-solid text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}>
-          {o.icon ? <Icon name={o.icon} className="h-3.5 w-3.5" /> : null}{o.label}
-        </button>
-      ))}
+    <div role="group" aria-label={label} className={`inline-flex ${quiet ? "gap-0.5" : "rounded-full bg-muted p-0.5"} ${className}`}>
+      {options.map((o) => {
+        const on = o.value === value;
+        const look = quiet ? (on ? "bg-muted text-foreground" : "text-muted-foreground hover:bg-muted") : (on ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground");
+        return (
+          <button key={o.value} type="button" aria-pressed={on} disabled={o.disabled} onClick={() => onChange(o.value)} className={`inline-flex items-center gap-1.5 whitespace-nowrap rounded-full font-semibold transition-colors disabled:opacity-40 ${pad} ${look}`}>
+            {o.icon ? <Icon name={o.icon} className="h-3.5 w-3.5" /> : null}{o.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

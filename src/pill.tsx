@@ -19,7 +19,7 @@ export function Pill({ href, icon, on, onClick, className = "", children }: Comm
   return <button type="button" onClick={onClick} aria-pressed={on} className={cls}>{body}</button>;
 }
 
-export type ButtonTone = "ink" | "brand" | "quiet" | "ghost" | "danger";
+export type ButtonTone = "ink" | "brand" | "quiet" | "soft" | "ghost" | "danger";
 export type ButtonSize = "sm" | "md" | "lg";
 
 /* How an icon answers a press, read from its name. */
@@ -51,7 +51,7 @@ function usePress(onClick?: (e: React.MouseEvent) => void) {
 
 const SPIN = <svg viewBox="0 0 24 24" className="tz-spin h-[1em] w-[1em]" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden><path d="M12 3.6a8.4 8.4 0 1 0 8.4 8.4" /></svg>;
 
-export function Button({ href, icon, iconLeft, tone = "ink", size = "md", loading = false, disabled = false, full = false, type = "button", onClick, className = "", children }: Common & { href?: string; iconLeft?: IconName; tone?: ButtonTone; size?: ButtonSize; loading?: boolean; disabled?: boolean; full?: boolean; type?: "button" | "submit"; onClick?: (e: React.MouseEvent) => void }) {
+export function Button({ href, icon, iconLeft, tone = "ink", size = "md", loading = false, disabled = false, full = false, type = "button", title, onClick, className = "", children }: Common & { href?: string; iconLeft?: IconName; title?: string; tone?: ButtonTone; size?: ButtonSize; loading?: boolean; disabled?: boolean; full?: boolean; type?: "button" | "submit"; onClick?: (e: React.MouseEvent) => void }) {
   const { pressed, press } = usePress(onClick);
   const motion = iconMotion(icon ?? iconLeft);
   const cls = `tz-button is-${tone} is-${size} ${full ? "is-full" : ""} ${pressed ? "is-pressed" : ""} ${loading ? "is-loading" : ""} ${className}`;
@@ -63,9 +63,9 @@ export function Button({ href, icon, iconLeft, tone = "ink", size = "md", loadin
       {!icon && !iconLeft && loading ? <span className="tz-button-icon" data-side="right">{SPIN}</span> : null}
     </>
   );
-  if (href && !disabled && href.startsWith("/")) return <Link href={href} className={cls} data-motion={motion} onClick={press}>{body}</Link>;
-  if (href && !disabled) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls} data-motion={motion} onClick={press}>{body}</a>;
-  return <button type={type} onClick={press} disabled={disabled || loading} aria-busy={loading || undefined} className={cls} data-motion={motion}>{body}</button>;
+  if (href && !disabled && href.startsWith("/")) return <Link href={href} className={cls} title={title} data-motion={motion} onClick={press}>{body}</Link>;
+  if (href && !disabled) return <a href={href} target="_blank" rel="noopener noreferrer" className={cls} title={title} data-motion={motion} onClick={press}>{body}</a>;
+  return <button type={type} onClick={press} disabled={disabled || loading} aria-busy={loading || undefined} title={title} className={cls} data-motion={motion}>{body}</button>;
 }
 
 export function IconButton({ icon, label, href, tone = "quiet", size = "md", on, loading = false, disabled = false, square = false, onClick, className = "" }: { icon: IconName; label: string; href?: string; tone?: ButtonTone; size?: ButtonSize; on?: boolean; loading?: boolean; disabled?: boolean; square?: boolean; onClick?: (e: React.MouseEvent) => void; className?: string }) {

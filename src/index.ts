@@ -13,5 +13,6 @@ export { Tabs, Breadcrumb, Pagination, Menu, Stepper, type MenuItem } from "./na
 export { Alert, ToastProvider, useToast, Dialog, Drawer, Tooltip, Progress, Ring, Spinner, Skeleton, Empty, type Tone } from "./feedback";
 export { Avatar, AvatarGroup, Badge, Table, Stat, Timeline, DefinitionList, Kbd, Code, Divider, type Column } from "./display";
 export { Bar, BarList, BarFill, type BarPart, type BarProps, type BarListItem, type BarListProps, type BarSize } from "./bars";
+export { DailyChart, fillDays, niceCeil, type DailySeries } from "./daily-chart";
 export { Card, Panel, Accordion, Container, Stack } from "./surfaces";
 export type { StoryBoard, StoryFrame, StoryItem, StorySrc } from "./types";
