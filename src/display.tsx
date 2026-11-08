@@ -23,9 +23,9 @@ export function AvatarGroup({ people, size = 28, max = 4, className = "" }: { pe
   );
 }
 
-export function Badge({ children, tone = "muted", dot, className = "" }: { children: React.ReactNode; tone?: "muted" | "brand" | "up" | "down" | "warm" | "ink" | "outline"; dot?: boolean; className?: string }) {
+export function Badge({ children, tone = "muted", dot, title, className = "" }: { children: React.ReactNode; tone?: "muted" | "brand" | "up" | "down" | "warm" | "ink" | "outline"; dot?: boolean; title?: string; className?: string }) {
   const t = { muted: "bg-muted text-foreground", brand: "bg-brand-soft text-brand-strong", up: "bg-up/12 text-up", down: "bg-down/12 text-down", warm: "bg-warm/15 text-warm", ink: "bg-foreground text-background", outline: "border border-hairline text-muted-foreground" }[tone];
-  return <span className={`tz-num inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-semibold ${t} ${className}`}>{dot ? <i className="inline-block h-1.5 w-1.5 rounded-full bg-current" /> : null}{children}</span>;
+  return <span title={title} className={`tz-num inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] font-semibold ${t} ${className}`}>{dot ? <i className="inline-block h-1.5 w-1.5 rounded-full bg-current" /> : null}{children}</span>;
 }
 
 export type Column<T> = { key: string; label: string; align?: "left" | "right"; width?: string; render?: (row: T) => React.ReactNode };
