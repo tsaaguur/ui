@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       // ui.tsaaguur.mn: built here with `pnpm install --frozen-lockfile && pnpm build`
-      name: "trend-ui",
+      name: "tsaaguur-ui",
       cwd: __dirname,
       // the workspace root is the repo, so standalone nests the app under site/
       script: ".next/standalone/site/server.js",
