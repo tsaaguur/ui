@@ -33,6 +33,7 @@ src/
   feedback.tsx    Alert, ToastProvider/useToast, Dialog, Drawer, Tooltip, Progress, Ring, Spinner, Skeleton, Empty
   display.tsx     Avatar, AvatarGroup, Badge, Table, Stat, Timeline, DefinitionList, Kbd, Code, Divider
   bars.tsx        Bar, BarList, BarFill (every horizontal bar: a track, a breakdown as rows, a fill behind a row)
+  daily-chart.tsx DailyChart, fillDays, niceCeil (every per-day chart; from the tsaaguur admin, 2026-11-09)
   surfaces.tsx    Card, Panel, Accordion, Container, Stack
   section-head.tsx, ticker.tsx, theme-toggle.tsx, board.tsx, types.ts, format.ts
   index.ts        the public surface

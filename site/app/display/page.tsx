@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Avatar, AvatarGroup, Badge, Table, Stat, Bar, BarList, BarFill, Timeline, DefinitionList, Kbd, Code, Divider, Glyph } from "@tsaaguur/ui";
+import { Avatar, AvatarGroup, Badge, Table, Stat, Bar, BarList, BarFill, DailyChart, Timeline, DefinitionList, Kbd, Code, Divider, Glyph } from "@tsaaguur/ui";
 import { Doc, Stage, Props } from "@/components/doc";
 
 const SHARE = [{ key: "search", label: "Search", value: 34, color: "var(--brand)" }, { key: "social", label: "Social", value: 15, color: "var(--down)" }, { key: "sites", label: "Other sites", value: 7, color: "var(--warm)" }, { key: "ai", label: "AI assistants", value: 1, color: "var(--up)" }, { key: "direct", label: "Direct", value: 187, color: "var(--muted-foreground)" }];
 const RANK = [{ key: "a", label: "Daily Desk", value: 27300 }, { key: "b", label: "City Hall", value: 11200 }, { key: "c", label: "Open Budget", value: 3900 }, { key: "d", label: "Morning Brief", value: 999 }, { key: "e", label: "Valley News", value: 108 }];
+const DAYS = Array.from({ length: 14 }, (_, i) => `11.${i + 1}`);
+const DAILY = [{ key: "news", name: "News", color: "var(--brand)", values: [120, 140, 131, 160, 155, 98, 90, 170, 182, 176, 190, 150, 142, 165] }, { key: "posts", name: "Posts", color: "var(--up)", values: [60, 72, 70, 81, 77, 40, 35, 88, 95, 90, 99, 80, 74, 86] }];
 const FILL: [string, number][] = [["sample.mn", 9], ["example.mn", 6], ["daily.mn", 4], ["brief.mn", 1]];
 
 type Row = { name: string; side: string; posts: number; delta: number };
@@ -29,6 +31,9 @@ export default function Page() {
           <div><div className="tz-label mb-3">Share of a whole</div><BarList ariaLabel="Where readers came from" scale="total" share dot size="lg" labelClassName="w-[112px] text-muted-foreground" items={SHARE} /></div>
           <div><div className="tz-label mb-3">Ranking</div><BarList ariaLabel="Loudest pages" items={RANK} format={(n) => (n >= 1000 ? `${(n / 1000).toFixed(1)}k` : String(n))} size="lg" /></div>
         </div>
+      </Stage>
+      <Stage title="DailyChart" note="One chart for every per-day series (the admin pages, 2026-11-09): stacked or not, a tooltip inside the chart, a limit line when asked. Server data in, no library behind it." code={'<DailyChart labels={days} series={[{ key: "news", name: "News", color: "var(--brand)", values }]} stacked height={200} ariaLabel="Rows stored per day" />'}>
+        <DailyChart labels={DAYS} series={DAILY} stacked height={200} empty="No rows in this range" ariaLabel="Rows stored per day, by kind" />
       </Stage>
       <Stage title="Bar" note="The track on its own, for a small bar inside a row. One fill, or parts side by side for a split. Five heights: xs, sm, md, lg, xl." code={'<Bar value={62} />  <Bar value={18} max={40} color="var(--up)" size="sm" />\n<Bar parts={[{ value: 31, color: "var(--brand)" }, { value: 15, color: "var(--warm)" }]} total={100} label="work 31, news 15" />'}>
         <div className="grid max-w-[520px] grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 text-[13px]">
