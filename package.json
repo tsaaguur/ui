@@ -1,6 +1,6 @@
 {
   "name": "@tsaaguur/ui",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "private": true,
   "description": "Tsaaguur's own UI library: tokens, type, drawn icons, topic pictograms, marks that move, panels, pills, the story board. Documented at ui.tsaaguur.mn.",
   "type": "module",
