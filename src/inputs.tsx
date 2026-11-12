@@ -42,11 +42,11 @@ export function Textarea({ label, hint, error, className = "", ...rest }: FieldP
   );
 }
 
-export function SearchField({ value, onChange, placeholder = "Хайх...", className = "" }: { value: string; onChange: (v: string) => void; placeholder?: string; className?: string }) {
+export function SearchField({ value, onChange, placeholder = "Хайх...", name = "q", className = "" }: { value: string; onChange: (v: string) => void; placeholder?: string; name?: string; className?: string }) {
   return (
     <span className={`tz-field ${className}`}>
       <Icon name="search" className="h-4 w-4 shrink-0 text-muted-foreground" />
-      <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} aria-label={placeholder} className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-muted-foreground/70" />
+      <input name={name} type="search" value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} aria-label={placeholder} className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-muted-foreground/70" />
       {value ? <button type="button" onClick={() => onChange("")} aria-label="Цэвэрлэх" className="grid h-5 w-5 place-items-center rounded-full hover:bg-muted"><Icon name="close" className="h-3 w-3" /></button> : null}
     </span>
   );
