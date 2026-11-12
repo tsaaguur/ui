@@ -212,6 +212,11 @@ html[data-tz-vt="active"]::view-transition-new(root) { animation: none; mix-blen
   @keyframes tz-spin { to { transform: rotate(360deg); } }
   .tz-spin { animation: tz-spin 1.1s linear infinite; }
   @keyframes tz-shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-  .tz-skeleton { background: linear-gradient(90deg, var(--muted) 25%, color-mix(in oklch, var(--muted) 60%, var(--card-solid)) 50%, var(--muted) 75%); background-size: 200% 100%; animation: tz-shimmer 1.4s ease-in-out infinite; }
+  /* the band sits at the middle of a 200vw image: -130vw..30vw carries it from just off the left edge to just off the right */
+  @keyframes tz-sweep { 0% { background-position: -130vw 0; } 100% { background-position: 30vw 0; } }
+  /* one sweep for the whole screen (0.4.4, 2026-11-13): the gradient is sized to the viewport and fixed to it,
+     so every block of a skeleton lights up as the same band passes, instead of each block running its own
+     sweep at a speed set by its own width; a phone that ignores fixed backgrounds falls back to per-block */
+  .tz-skeleton { background-color: var(--muted); background-image: linear-gradient(100deg, transparent 30%, color-mix(in oklch, var(--card-solid) 55%, transparent) 50%, transparent 70%); background-size: 200vw 100%; background-attachment: fixed; background-repeat: no-repeat; animation: tz-sweep 1.6s ease-in-out infinite; }
   @media (prefers-reduced-motion: reduce) { .tz-spin, .tz-skeleton, .tz-drawer, .tz-menu, .tz-button::after, .tz-button-icon svg, .tz-button-icon svg * { animation: none !important; } }
 }
