@@ -133,8 +133,8 @@ export function Spinner({ className = "h-5 w-5" }: { className?: string }) {
   return <Icon name="loader" className={`tz-spin ${className}`} title="Ачаалж байна" />;
 }
 
-export function Skeleton({ className = "h-4 w-full" }: { className?: string }) {
-  return <span className={`tz-skeleton block rounded-[6px] ${className}`} aria-hidden />;
+export function Skeleton({ className = "h-4 w-full", style }: { className?: string; style?: React.CSSProperties }) {
+  return <span className={`tz-skeleton block rounded-[6px] ${className}`} style={style} aria-hidden />;
 }
 
 export function Empty({ icon = "sheet", title, hint, action, className = "" }: { icon?: IconName; title: string; hint?: string; action?: React.ReactNode; className?: string }) {
